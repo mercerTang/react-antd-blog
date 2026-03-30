@@ -8,27 +8,80 @@
 /* 布局样式 */
 .layout {
   min-height: 100vh;
+  background: #fff;
 }
 
-/* 头部样式 */
+/* 头部样式 - 简洁风格 */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  background: #1890ff;
+  padding: 0 40px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 60px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .logo {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .menu {
   flex: 1;
-  max-width: 600px;
-  margin-left: 48px;
+  max-width: 400px;
+  margin-left: 80px;
+}
+
+/* 导航菜单样式 - 简洁风格 */
+.menu .ant-menu-item {
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0 15px;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 2px solid transparent;
+}
+
+.menu .ant-menu-item:hover {
+  color: #333;
+  background: transparent;
+}
+
+/* 修复 hover 时的蓝色下划线 */
+.menu .ant-menu-horizontal > .ant-menu-item:hover::after {
+  border-bottom-color: #333 !important;
+  border-bottom-width: 2px !important;
+}
+
+.menu .ant-menu-item-selected {
+  color: #333 !important;
+  background: transparent !important;
+  border-bottom: 2px solid #333 !important;
+  box-shadow: none !important;
+}
+
+/* 确保没有其他蓝色下划线样式 */
+.menu .ant-menu-item-selected::after {
+  display: none !important;
+}
+
+.menu .ant-menu-horizontal > .ant-menu-item::after {
+  border-bottom-color: #333 !important;
+}
+
+.menu .ant-menu-horizontal > .ant-menu-item-selected::after {
+  border-bottom-color: #333 !important;
+  border-bottom-width: 2px !important;
 }
 
 /* 内容区域 */
@@ -36,146 +89,126 @@
   padding: 0;
 }
 
-/* 英雄区域 */
+/* 英雄区域 - 简洁风格 */
 .hero-section {
-  background: linear-gradient(135deg, #1890ff 0%, #69c0ff 100%);
-  height: 100vh;
+  background: #fff;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #333;
   text-align: center;
+  padding: 0 24px;
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 800px;
   padding: 0 24px;
 }
 
 .hero-title {
-  color: white !important;
-  margin-bottom: 16px !important;
+  color: #333 !important;
+  margin-bottom: 24px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 36px !important;
 }
 
 .hero-description {
   font-size: 18px;
-  margin-bottom: 32px !important;
-  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 48px !important;
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
 }
 
-/* 通用区块样式 */
+/* 通用区块样式 - 简洁风格 */
 .section {
-  padding: 64px 0;
-  background: #f5f5f5;
+  padding: 80px 0;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .section:nth-child(even) {
-  background: white;
+  background: #fafafa;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
 }
 
 .section-title {
   text-align: center;
-  margin-bottom: 48px !important;
+  margin-bottom: 60px !important;
   color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 28px !important;
 }
 
-/* 关于我卡片 */
+/* 关于我卡片 - 简洁风格 */
 .about-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
-/* 技能卡片 */
+/* 技能卡片 - 简洁风格 */
 .skill-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
   transition: all 0.3s ease;
   height: 100%;
+  background: #fff;
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .skill-bar {
   width: 100%;
-  height: 8px;
+  height: 6px;
   background: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 3px;
   margin: 16px 0;
   overflow: hidden;
 }
 
 .skill-progress {
   height: 100%;
-  background: #1890ff;
-  border-radius: 4px;
+  background: #333;
+  border-radius: 3px;
   transition: width 0.6s ease;
 }
 
-/* 项目卡片 */
-.project-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  height: 100%;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.project-cover {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f8ff;
-}
-
-.project-tags {
-  margin-top: 16px;
-}
-
-.tag {
-  display: inline-block;
-  background: #e6f7ff;
-  color: #1890ff;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-
-/* 联系表单 */
+/* 联系表单 - 简洁风格 */
 .contact-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
 .input-field, .textarea-field {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   font-size: 14px;
   margin-top: 8px;
   transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #fff;
 }
 
 .input-field:focus, .textarea-field:focus {
   outline: none;
-  border-color: #1890ff;
-  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
 }
 
 .textarea-field {
@@ -183,19 +216,78 @@
   min-height: 120px;
 }
 
-/* 页脚 */
+/* 按钮样式 - 简洁风格 */
+.ant-btn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+.ant-btn-primary {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+
+.ant-btn-primary:hover {
+  background-color: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.ant-btn-default {
+  background-color: #fff;
+  border-color: #e0e0e0;
+  color: #333;
+}
+
+.ant-btn-default:hover {
+  background-color: #f5f5f5;
+  border-color: #d0d0d0;
+  color: #333;
+}
+
+/* 页脚 - 简洁风格 */
 .footer {
-  background: #001529;
-  color: white;
+  background: #fafafa;
+  color: #666;
   text-align: center;
-  padding: 24px 0;
+  padding: 40px 0;
+  border-top: 1px solid #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
 }
 
 /* 响应式设计 */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 700px;
+    padding: 0 30px;
+  }
+  
+  .header {
+    padding: 0 30px;
+  }
+  
+  .menu {
+    margin-left: 60px;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
     padding: 16px 0;
+    height: auto;
   }
   
   .logo {
@@ -208,15 +300,46 @@
   }
   
   .hero-section {
-    height: auto;
-    padding: 100px 0;
+    min-height: 70vh;
+    padding: 60px 0;
+  }
+  
+  .hero-title {
+    font-size: 28px !important;
+  }
+  
+  .hero-description {
+    font-size: 16px;
   }
   
   .section {
-    padding: 48px 0;
+    padding: 60px 0;
   }
   
   .container {
-    padding: 0 16px;
+    padding: 0 20px;
+    max-width: 100%;
+  }
+  
+  .section-title {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 24px !important;
+  }
+  
+  .hero-description {
+    font-size: 14px;
+  }
+  
+  .section {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 20px !important;
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Layout, Menu, Button, Card, Row, Col, Typography, Avatar, Space, Divider, message } from 'antd'
-import { HomeOutlined, UserOutlined, CodeOutlined, MailOutlined, GithubOutlined, LinkedinOutlined, TwitterOutlined } from '@ant-design/icons'
+import { Layout, Menu, Button, Card, Row, Col, Typography, Avatar, Space, Divider } from 'antd'
+import { HomeOutlined, UserOutlined, CodeOutlined, MailOutlined, GithubOutlined } from '@ant-design/icons'
 import './App.css'
 
 const { Header, Content, Footer } = Layout
@@ -10,11 +10,10 @@ function App() {
   const [current, setCurrent] = useState('home')
 
   const menuItems = [
-    { key: 'home', icon: <HomeOutlined />, label: '首页' },
-    { key: 'about', icon: <UserOutlined />, label: '关于我' },
-    { key: 'skills', icon: <CodeOutlined />, label: '技能' },
-    { key: 'projects', icon: <CodeOutlined />, label: '项目' },
-    { key: 'contact', icon: <MailOutlined />, label: '联系我' },
+    { key: 'home', label: '首页' },
+    { key: 'about', label: '关于我' },
+    { key: 'skills', label: '技能' },
+    { key: 'contact', label: '联系我' },
   ]
 
   const skills = [
@@ -23,7 +22,6 @@ function App() {
     { name: 'Node.js', level: 80 },
     { name: 'Python', level: 75 },
     { name: 'Vue.js', level: 70 },
-    { name: 'Docker', level: 65 },
   ]
 
   const projects = [
@@ -52,38 +50,40 @@ function App() {
     }
   }
 
-  const handleContact = () => {
-    message.success('感谢您的留言，我会尽快回复！')
-  }
+
 
   return (
     <Layout className="layout">
       <Header className="header">
-        <div className="logo">My Portfolio</div>
+        <div className="logo">mercerTang</div>
         <Menu
-          theme="dark"
+          theme="light"
           mode="horizontal"
           selectedKeys={[current]}
           items={menuItems}
           onClick={handleMenuClick}
           className="menu"
+          style={{ 
+            backgroundColor: 'transparent',
+            borderBottom: 'none'
+          }}
         />
       </Header>
 
       <Content className="content">
         <section id="home" className="hero-section">
           <div className="hero-content">
-            <Avatar size={120} src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" />
-            <Title level={1} className="hero-title">你好，我是开发者</Title>
+            <Avatar size={100} src="https://github.com/mercerTang.png" style={{ marginBottom: '24px' }} />
+            <Title level={1} className="hero-title">你好，我是 mercerTang</Title>
             <Paragraph className="hero-description">
-              全栈开发工程师 | 热爱技术 | 持续学习
+              前端开发工程师 | 热爱技术 | 持续学习
             </Paragraph>
             <Space size="large">
               <Button type="primary" size="large" onClick={() => handleMenuClick({ key: 'contact' })}>
                 联系我
               </Button>
-              <Button size="large" onClick={() => handleMenuClick({ key: 'projects' })}>
-                查看项目
+              <Button size="large" href="https://github.com/mercerTang" target="_blank">
+                GitHub
               </Button>
             </Space>
           </div>
@@ -109,19 +109,11 @@ function App() {
                   <Space orientation="vertical" size="middle">
                     <Space>
                       <MailOutlined />
-                      <Text>developer@example.com</Text>
+                      <Text>1253701123@qq.com</Text>
                     </Space>
                     <Space>
                       <GithubOutlined />
-                      <Text>github.com/developer</Text>
-                    </Space>
-                    <Space>
-                      <LinkedinOutlined />
-                      <Text>linkedin.com/in/developer</Text>
-                    </Space>
-                    <Space>
-                      <TwitterOutlined />
-                      <Text>@developer</Text>
+                      <Text>github.com/mercerTang</Text>
                     </Space>
                   </Space>
                 </Col>
@@ -152,73 +144,26 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" className="section">
-          <div className="container">
-            <Title level={2} className="section-title">项目展示</Title>
-            <Row gutter={[24, 24]}>
-              {projects.map((project, index) => (
-                <Col xs={24} md={8} key={index}>
-                  <Card
-                    hoverable
-                    className="project-card"
-                    cover={
-                      <div className="project-cover">
-                        <CodeOutlined style={{ fontSize: 48, color: '#1890ff' }} />
-                      </div>
-                    }
-                  >
-                    <Title level={4}>{project.title}</Title>
-                    <Paragraph>{project.description}</Paragraph>
-                    <div className="project-tags">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="tag">{tag}</span>
-                      ))}
-                    </div>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        </section>
+
 
         <section id="contact" className="section">
           <div className="container">
             <Title level={2} className="section-title">联系我</Title>
             <Card className="contact-card">
-              <Row gutter={[24, 24]}>
-                <Col xs={24} md={12}>
-                  <Title level={4}>发送消息</Title>
-                  <Space orientation="vertical" style={{ width: '100%' }} size="large">
-                    <div>
-                      <Text>您的姓名</Text>
-                      <input type="text" placeholder="请输入您的姓名" className="input-field" />
-                    </div>
-                    <div>
-                      <Text>邮箱地址</Text>
-                      <input type="email" placeholder="请输入您的邮箱" className="input-field" />
-                    </div>
-                    <div>
-                      <Text>消息内容</Text>
-                      <textarea placeholder="请输入您的消息" className="textarea-field" rows={4} />
-                    </div>
-                    <Button type="primary" size="large" onClick={handleContact}>
-                      发送消息
-                    </Button>
-                  </Space>
-                </Col>
-                <Col xs={24} md={12}>
-                  <Title level={4}>其他联系方式</Title>
+              <Row justify="center">
+                <Col xs={24} md={8}>
+                  <Title level={4}>联系方式</Title>
                   <Paragraph>
                     如果您有项目合作意向或技术交流需求，欢迎通过以下方式联系我。
                   </Paragraph>
-                  <Space direction="vertical" size="large">
+                  <Space orientation="vertical" size="large">
                     <div>
                       <Text strong>邮箱：</Text>
-                      <Text>developer@example.com</Text>
+                      <Text>1253701123@qq.com</Text>
                     </div>
                     <div>
                       <Text strong>微信：</Text>
-                      <Text>developer_wx</Text>
+                      <Text>MercerTTT</Text>
                     </div>
                     <div>
                       <Text strong>工作时间：</Text>
@@ -233,7 +178,7 @@ function App() {
       </Content>
 
       <Footer className="footer">
-        <Text>© 2024 My Portfolio. All rights reserved.</Text>
+        <Text>© 2026 My Portfolio. All rights reserved.</Text>
       </Footer>
     </Layout>
   )
