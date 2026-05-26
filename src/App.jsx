@@ -3,36 +3,19 @@ import { Layout, Menu, Button, Card, Row, Col, Typography, Avatar, Space, Divide
 import { HomeOutlined, UserOutlined, CodeOutlined, MailOutlined, GithubOutlined, AppstoreOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
-import CssEffects from './pages/CssEffects'
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
 
 // 主页面组件
-function HomePage() {
+function HomePage({ darkMode, toggleDarkMode }) {
   const navigate = useNavigate()
   const [current, setCurrent] = useState('home')
-  const [darkMode, setDarkMode] = useState(false)
-
-  // 切换主题
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
-
-  // 应用主题
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode')
-    } else {
-      document.body.classList.remove('dark-mode')
-    }
-  }, [darkMode])
 
   const menuItems = [
     { key: 'home', label: '首页' },
     { key: 'about', label: '关于我' },
     { key: 'skills', label: '技能' },
-    { key: 'css', label: 'CSS特效' },
     { key: 'contact', label: '联系我' },
   ]
 
@@ -46,13 +29,9 @@ function HomePage() {
 
   const handleMenuClick = (e) => {
     setCurrent(e.key)
-    if (e.key === 'css') {
-      navigate('/css')
-    } else {
-      const element = document.getElementById(e.key)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
+    const element = document.getElementById(e.key)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -108,7 +87,7 @@ function HomePage() {
               <Row gutter={[24, 24]}>
                 <Col xs={24} md={12}>
                   <Paragraph className={darkMode ? 'dark-mode' : ''}>
-                    我是一名拥有 5 年经验的全栈开发工程师，专注于构建高性能、可扩展的 Web 应用程序。
+                    我是一名拥有 3 年经验的全栈开发工程师，专注于构建高性能、可扩展的 Web 应用程序。
                     热爱开源社区，积极参与技术分享和项目贡献。
                   </Paragraph>
                   <Paragraph className={darkMode ? 'dark-mode' : ''}>
@@ -194,10 +173,8 @@ function HomePage() {
   )
 }
 
-// CSS特效页面组件
-function CssPage() {
-  const navigate = useNavigate()
-  const [current, setCurrent] = useState('css')
+// 主应用组件
+function App() {
   const [darkMode, setDarkMode] = useState(false)
 
   // 切换主题
@@ -214,78 +191,10 @@ function CssPage() {
     }
   }, [darkMode])
 
-  const menuItems = [
-    { key: 'home', label: '首页' },
-    { key: 'about', label: '关于我' },
-    { key: 'skills', label: '技能' },
-    { key: 'css', label: 'CSS特效' },
-    { key: 'contact', label: '联系我' },
-  ]
-
-  const handleMenuClick = (e) => {
-    setCurrent(e.key)
-    if (e.key === 'css') {
-      // 已经在CSS页面
-    } else if (e.key === 'home') {
-      navigate('/')
-    } else {
-      navigate('/')
-      // 延迟执行滚动，等待页面加载完成
-      setTimeout(() => {
-        const element = document.getElementById(e.key)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-      }, 100)
-    }
-  }
-
-  return (
-    <Layout className={`layout ${darkMode ? 'dark-mode' : ''}`}>
-      <Header className={`header ${darkMode ? 'dark-mode' : ''}`}>
-        <div className={`logo ${darkMode ? 'dark-mode' : ''}`} onClick={() => navigate('/')}>mercerTang</div>
-        <Menu
-          theme={darkMode ? 'dark' : 'light'}
-          mode="horizontal"
-          selectedKeys={[current]}
-          items={menuItems}
-          onClick={handleMenuClick}
-          className={`menu ${darkMode ? 'dark-mode' : ''}`}
-          style={{ 
-            backgroundColor: 'transparent',
-            borderBottom: 'none'
-          }}
-        />
-        <div className="theme-switch">
-          <Switch
-            checked={darkMode}
-            onChange={toggleDarkMode}
-            checkedChildren={<MoonOutlined />}
-            unCheckedChildren={<SunOutlined />}
-          />
-        </div>
-      </Header>
-
-      <Content className="content">
-        <section className={`section ${darkMode ? 'dark-mode' : ''}`}>
-          <CssEffects darkMode={darkMode} />
-        </section>
-      </Content>
-
-      <Footer className={`footer ${darkMode ? 'dark-mode' : ''}`}>
-        <Text>© 2026 My Portfolio. All rights reserved.</Text>
-      </Footer>
-    </Layout>
-  )
-}
-
-// 主应用组件
-function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/css" element={<CssPage />} />
+        <Route path="/" element={<HomePage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
       </Routes>
     </Router>
   )
