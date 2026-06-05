@@ -328,6 +328,77 @@
   }
 }
 
+/* ===== 简历区域 ===== */
+.resume-info-card,
+.resume-highlight-card,
+.resume-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+.resume-info-card.dark-mode,
+.resume-highlight-card.dark-mode,
+.resume-card.dark-mode {
+  background: #000;
+  color: #fff;
+}
+
+.resume-ai-card {
+  border-radius: 12px;
+  border-left: 3px solid #1a1a1a;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.resume-ai-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.resume-ai-card.dark-mode {
+  background: #111;
+  border-left-color: #fff;
+}
+
+.resume-ai-card.dark-mode:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.resume-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.resume-list li {
+  font-size: 13px;
+  color: #555;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 3px;
+  line-height: 1.7;
+}
+
+.resume-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #ccc;
+  font-size: 11px;
+}
+
+.resume-list.dark-mode li {
+  color: #ccc;
+}
+
+.resume-tech-row {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
 /* ===== 动画 ===== */
 @keyframes pulse {
   0%, 100% {

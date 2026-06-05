@@ -4,6 +4,7 @@ import { MailOutlined, GithubOutlined, MoonOutlined, SunOutlined, ReadOutlined }
 import { useTheme } from '../context/ThemeContext'
 import logger from '../utils/logger'
 import BlogPosts from './BlogPosts'
+import ResumeSection from './ResumeSection'
 import LogViewer from './LogViewer'
 
 const { Header, Content, Footer } = Layout
@@ -13,6 +14,7 @@ const menuItems = [
   { key: 'home', label: '首页' },
   { key: 'about', label: '关于我' },
   { key: 'skills', label: '技能' },
+  { key: 'resume', label: '简历' },
   { key: 'blog', label: '博客' },
   { key: 'contact', label: '联系我' },
 ]
@@ -154,6 +156,8 @@ export default function HomePage() {
             </Row>
           </div>
         </section>
+
+        <ResumeSection />
 
         <BlogPosts />
 
