@@ -399,6 +399,625 @@
   gap: 4px;
 }
 
+/* ===== Page-Agent FAB 按钮组 ===== */
+.agent-fab-group {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.agent-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 28px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  animation: agentPulse 2s ease-in-out infinite;
+}
+
+.agent-trigger:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.agent-trigger.active {
+  background: #e8e8e8;
+  color: #333;
+  animation: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.agent-trigger-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.agent-trigger-label {
+  font-size: 13px;
+}
+
+@keyframes agentPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); }
+  50% { box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45); }
+}
+
+/* 齿轮按钮 */
+.agent-gear-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.agent-gear-btn:hover {
+  background: #333;
+  color: #fff;
+  transform: rotate(60deg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== 深色模式 - FAB ===== */
+body.dark-mode .agent-trigger {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .agent-trigger:hover {
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .agent-trigger.active {
+  background: #333;
+  color: #ddd;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .agent-gear-btn {
+  background: #333;
+  color: #aaa;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .agent-gear-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+@keyframes agentPulseDark {
+  0%, 100% { box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 4px 32px rgba(255, 255, 255, 0.2); }
+}
+
+body.dark-mode .agent-trigger:not(.active) {
+  animation: agentPulseDark 2s ease-in-out infinite;
+}
+
+/* ===== AI 设置面板 ===== */
+.agent-settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.agent-settings-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  width: 420px;
+  max-width: 90vw;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  animation: cardSlideUp 0.3s ease;
+}
+
+body.dark-mode .agent-settings-card {
+  background: #1a1a1a;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .agent-settings-overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.agent-settings-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+body.dark-mode .agent-settings-card h3 { color: #fff; }
+
+.agent-settings-desc {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+body.dark-mode .agent-settings-desc { color: #999; }
+
+.agent-settings-field { margin-bottom: 16px; }
+
+.agent-settings-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+body.dark-mode .agent-settings-field label { color: #ccc; }
+
+.agent-settings-field input,
+.agent-settings-field select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.agent-settings-field input:focus,
+.agent-settings-field select:focus {
+  border-color: #1a1a1a;
+  background: #fff;
+}
+
+body.dark-mode .agent-settings-field input,
+body.dark-mode .agent-settings-field select {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #ddd;
+}
+
+body.dark-mode .agent-settings-field input:focus,
+body.dark-mode .agent-settings-field select:focus {
+  border-color: #fff;
+  background: #333;
+}
+
+.agent-platform-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #f0f0f0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+body.dark-mode .agent-platform-badge {
+  background: #333;
+  color: #fff;
+}
+
+.agent-settings-hint {
+  display: block;
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 6px;
+}
+
+.agent-settings-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.agent-btn-save {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.agent-btn-save:hover:not(:disabled) {
+  background: #333;
+}
+
+.agent-btn-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+body.dark-mode .agent-btn-save {
+  background: #fff;
+  color: #000;
+}
+
+body.dark-mode .agent-btn-save:hover:not(:disabled) {
+  background: #ddd;
+}
+
+.agent-btn-cancel {
+  padding: 10px 24px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.agent-btn-cancel:hover { background: #f5f5f5; }
+
+body.dark-mode .agent-btn-cancel {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #ccc;
+}
+
+body.dark-mode .agent-btn-cancel:hover {
+  background: #333;
+}
+
+/* ===== Hero 区域 AI 提示 ===== */
+.agent-hero-hint {
+  position: fixed;
+  top: 80px;
+  right: 28px;
+  z-index: 997;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 13px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  animation: hintSlideIn 0.5s ease 0.8s both;
+}
+
+body.dark-mode .agent-hero-hint {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes hintSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.agent-hint-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: hintDot 1.5s ease-in-out infinite;
+}
+
+@keyframes hintDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.agent-hint-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.agent-hint-close:hover { color: #fff; }
+body.dark-mode .agent-hint-close:hover { color: #000; }
+
+body.dark-mode .agent-hint-close { color: #777; }
+
+@media (max-width: 768px) {
+  .agent-fab-group {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .agent-trigger {
+    padding: 10px 16px;
+    border-radius: 24px;
+  }
+
+  .agent-trigger-label { display: none; }
+
+  .agent-gear-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .agent-hero-hint {
+    top: 70px;
+    right: 12px;
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+}
+
+/* ===== Page-Agent 面板统一样式 ===== */
+/*
+ * page-agent 通过 JS 注入 CSS（CSS Modules，类名 hash: _xxx_1tu05_N）
+ * 非 Shadow DOM，可用 [class*="hash"] 属性选择器覆盖
+ */
+[class*="_wrapper_1tu05"] {
+  --color-1: #aa3bff !important;
+  --color-2: #c084fc !important;
+  --color-3: #ff5751 !important;
+  --color-4: #fbbf24 !important;
+  --border-radius: 12px !important;
+  --width: 380px !important;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* 隐藏关闭/停止按钮（由外部 FAB 控制） */
+[class*="_stopButton_1tu05"] { display: none !important; }
+
+/* ===== 浅色模式 ===== */
+
+/* header - 白色卡片风格 */
+[class*="_header_1tu05"] {
+  background: #fff !important;
+  backdrop-filter: none !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e5e5e5 !important;
+  padding: 8px 14px !important;
+}
+
+[class*="_header_1tu05"] [class*="_statusText_"] {
+  color: #333 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* 指示灯微调 */
+[class*="_indicator_1tu05"] {
+  width: 7px !important;
+  height: 7px !important;
+}
+
+/* 控制按钮 - 展开 */
+[class*="_controlButton_1tu05"] {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+  background: #f5f5f5 !important;
+  color: #666 !important;
+  font-size: 12px !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid transparent !important;
+}
+[class*="_controlButton_1tu05"]:hover {
+  background: #eee !important;
+  color: #333 !important;
+  border-color: #ddd !important;
+}
+
+/* 背景光晕 - 浅色模式淡化 */
+[class*="_background_1tu05"] {
+  opacity: 0.5 !important;
+}
+
+/* 历史面板 */
+[class*="_historySectionWrapper_1tu05"] {
+  background: #fff !important;
+  backdrop-filter: none !important;
+  border: 1px solid #e5e5e5 !important;
+  border-bottom: none !important;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* 历史条目 */
+[class*="_historyItem_1tu05"] {
+  color: #444 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  background: #fafafa !important;
+  border-left: 2px solid #e5e5e5 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 8px 10px !important;
+}
+[class*="_historyItem_1tu05"]:hover {
+  background: #f0f0f0 !important;
+}
+[class*="_historyItem_1tu05"]::before { display: none !important; }
+[class*="_historyItem_1tu05"] [class*="_historyMeta_"] {
+  color: #999 !important;
+  font-size: 10px !important;
+}
+
+/* 历史条目状态色 - 匹配页面风格 */
+[class*="_historyItem_"][class*="_thinking"] { border-left-color: #aa3bff !important; }
+[class*="_historyItem_"][class*="_completed"],
+[class*="_historyItem_"][class*="_input"],
+[class*="_historyItem_"][class*="_output"] {
+  border-left-color: #22c55e !important;
+  background: #f0fdf4 !important;
+}
+[class*="_historyItem_"][class*="_error"] {
+  border-left-color: #ef4444 !important;
+  background: #fef2f2 !important;
+}
+[class*="_historyItem_"][class*="_observation"] {
+  border-left-color: #a855f7 !important;
+  background: #faf5ff !important;
+}
+[class*="_historyItem_"][class*="_question"] {
+  border-left-color: #f59e0b !important;
+  background: #fffbeb !important;
+}
+
+/* 输入区域 */
+[class*="_inputSectionWrapper_1tu05"] {
+  background: #fff !important;
+  backdrop-filter: none !important;
+  border: 1px solid #e5e5e5 !important;
+  border-top: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  border-radius: 0 0 12px 12px !important;
+}
+[class*="_taskInput_1tu05"] {
+  background: #f5f5f5 !important;
+  color: #333 !important;
+  border: 1px solid #e5e5e5 !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  font-family: inherit !important;
+}
+[class*="_taskInput_1tu05"]::placeholder {
+  color: #aaa !important;
+}
+[class*="_taskInput_1tu05"]:focus {
+  background: #fff !important;
+  border-color: #aa3bff !important;
+  box-shadow: 0 0 0 2px rgba(170, 59, 255, 0.15) !important;
+}
+
+/* ===== 暗色模式 ===== */
+body.dark-mode [class*="_wrapper_1tu05"] {
+  --color-1: #c084fc !important;
+  --color-2: #a855f7 !important;
+}
+
+body.dark-mode [class*="_header_1tu05"] {
+  background: #1a1a1a !important;
+  backdrop-filter: none !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode [class*="_header_1tu05"] [class*="_statusText_"] {
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode [class*="_historySectionWrapper_1tu05"] {
+  background: #1a1a1a !important;
+  border-color: #333 !important;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode [class*="_historyItem_1tu05"] {
+  color: #ddd !important;
+  background: #222 !important;
+  border-left-color: #444 !important;
+  box-shadow: none !important;
+}
+body.dark-mode [class*="_historyItem_1tu05"]:hover {
+  background: #2a2a2a !important;
+}
+
+body.dark-mode [class*="_historyItem_"][class*="_completed"],
+body.dark-mode [class*="_historyItem_"][class*="_input"],
+body.dark-mode [class*="_historyItem_"][class*="_output"] {
+  border-left-color: #4ade80 !important;
+  background: #0a2e0a !important;
+}
+body.dark-mode [class*="_historyItem_"][class*="_error"] {
+  border-left-color: #f87171 !important;
+  background: #2e0a0a !important;
+}
+body.dark-mode [class*="_historyItem_"][class*="_observation"] {
+  border-left-color: #c084fc !important;
+  background: #1a0a2e !important;
+}
+body.dark-mode [class*="_historyItem_"][class*="_question"] {
+  border-left-color: #fbbf24 !important;
+  background: #2e1a0a !important;
+}
+
+body.dark-mode [class*="_historyItem_1tu05"] [class*="_historyMeta_"] {
+  color: #777 !important;
+}
+
+body.dark-mode [class*="_controlButton_1tu05"] {
+  background: #2a2a2a !important;
+  color: #aaa !important;
+  border: 1px solid transparent !important;
+}
+body.dark-mode [class*="_controlButton_1tu05"]:hover {
+  background: #333 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode [class*="_inputSectionWrapper_1tu05"] {
+  background: #1a1a1a !important;
+  border-color: #333 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+body.dark-mode [class*="_taskInput_1tu05"] {
+  background: #2a2a2a !important;
+  color: #f5f5f5 !important;
+  border-color: #444 !important;
+}
+body.dark-mode [class*="_taskInput_1tu05"]::placeholder {
+  color: #666 !important;
+}
+body.dark-mode [class*="_taskInput_1tu05"]:focus {
+  background: #333 !important;
+  border-color: #c084fc !important;
+  box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.15) !important;
+}
+
+/* 暗色模式淡化背景光晕 */
+body.dark-mode [class*="_background_1tu05"] {
+  opacity: 0.7 !important;
+}
+
 /* ===== 动画 ===== */
 @keyframes pulse {
   0%, 100% {

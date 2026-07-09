@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Layout, Menu, Button, Card, Row, Col, Typography, Avatar, Space, Switch } from 'antd'
-import { MailOutlined, GithubOutlined, MoonOutlined, SunOutlined, ReadOutlined } from '@ant-design/icons'
+import { MailOutlined, GithubOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { useTheme } from '../context/ThemeContext'
 import logger from '../utils/logger'
-import BlogPosts from './BlogPosts'
 import ResumeSection from './ResumeSection'
-import LogViewer from './LogViewer'
+import PageAgent from './PageAgent'
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -15,7 +14,6 @@ const menuItems = [
   { key: 'about', label: '关于我' },
   { key: 'skills', label: '技能' },
   { key: 'resume', label: '简历' },
-  { key: 'blog', label: '博客' },
   { key: 'contact', label: '联系我' },
 ]
 
@@ -159,7 +157,8 @@ export default function HomePage() {
 
         <ResumeSection />
 
-        <BlogPosts />
+        {/* 博客模块暂时隐藏 */}
+        {/* <BlogPosts /> */}
 
         <section id="contact" className={`section ${darkMode ? 'dark-mode' : ''}`}>
           <div className="container">
@@ -196,7 +195,7 @@ export default function HomePage() {
         <Text>© 2026 My Portfolio. All rights reserved.</Text>
       </Footer>
 
-      {import.meta.env.DEV && <LogViewer />}
+      <PageAgent />
     </Layout>
   )
 }
