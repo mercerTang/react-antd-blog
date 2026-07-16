@@ -5,23 +5,26 @@ import { useTheme } from '../context/ThemeContext'
 const { Title, Paragraph, Text } = Typography
 
 const techCategories = [
-  { cat: '前端', tags: ['Vue3', 'TypeScript', 'React', 'Element Plus', 'ECharts', 'WPF'] },
-  { cat: '后端', tags: ['.NET 6/8', 'ASP.NET Core', 'WebSocket', 'RESTful API'] },
-  { cat: '数据库', tags: ['MySQL', 'SQLite', 'Redis', 'Entity Framework Core'] },
-  { cat: 'AI / Agent', tags: ['AI Agent', 'Claude Code', 'CCS', 'DeepSeek', 'LLM 集成'] },
-  { cat: '工程化', tags: ['Docker', 'Python', 'Git', '微服务'] },
+  { cat: '前端', tags: ['Vue3', 'TypeScript', 'React', 'Element Plus', 'Pinia', 'Vue Router', 'Vite', 'ECharts', 'Axios'] },
+  { cat: '桌面端', tags: ['WPF (.NET)', 'XAML', 'MVVM'] },
+  { cat: '后端', tags: ['.NET 6/8', 'ASP.NET Core', 'WebSocket', 'RESTful API', 'SignalR'] },
+  { cat: '数据库', tags: ['MySQL', 'PostgreSQL', 'SQLite', 'Redis', 'Entity Framework Core'] },
+  { cat: '知识库平台', tags: ['MaxKB', 'RAG 知识库', '向量检索', 'pgvector', '工作流编排'] },
+  { cat: '工程化', tags: ['Docker', 'Git', 'CI/CD', 'Nginx', 'Python', 'Jira'] },
 ]
 
 const workExperience = [
   {
     company: '毕马威全球商务服务 (广东) 有限公司',
     role: '全栈开发工程师',
-    period: '2024.05 — 2026.02',
+    period: '2024.05 — 至今',
     color: '#1a1a1a',
     details: [
-      '参与企业级中台系统及内部资源调度工具的核心开发，负责前后端架构搭建与桌面端应用落地',
-      '在国际化团队中协作，熟悉英文工作环境下的开发流程及项目管理规范',
-      '封装 20+ 通用业务组件，构建内部 UI 组件库，团队代码复用率提升 30%',
+      '主导企业级智能聊天机器人与知识库系统的前端架构及核心功能开发，基于知识切片与向量检索技术，将 FAQ 召回准确率从 72% 提升至 89%',
+      '设计并落地 Agent 任务编排引擎，构建"知识检索 → 工具调用 → 结果验证"闭环流程，关键业务流程处理效率提升 60%，减少人工介入 45%',
+      '独立负责企业级中台系统前端架构设计，封装含动态表单、权限指令在内的 20+ 通用业务组件，覆盖 6 个领域模块，团队代码复用率提升 30%、开发效率提升 25%',
+      '基于 ECharts 实现多维度数据可视化看板，覆盖实时监控、业务趋势与决策分析场景',
+      '在国际化团队中以英文作为工作语言，深度参与敏捷迭代、Code Review 及技术方案评审，沉淀可复用的技术组件与最佳实践',
     ],
   },
   {
@@ -30,42 +33,66 @@ const workExperience = [
     period: '2023.07 — 2024.03',
     color: '#999',
     details: [
-      '负责办公软件产品的全生命周期测试，保障产品质量',
-      '开发 Python 自动化脚本，提升测试覆盖率与执行效率',
+      '负责办公软件全生命周期测试流程，编写 Python 自动化测试脚本，回归测试效率提升 40%',
+      '构建质量保障体系，推动可测试性设计与缺陷预防方案落地，保障产品发版质量',
     ],
   },
 ]
 
 const projects = [
   {
-    title: '人工客服 IM 桌面应用',
-    period: '2025.09 — 2026.02',
-    tech: 'WPF (.NET) · WebSocket · EF Core · SQLite',
+    title: '智能客服知识库系统',
+    period: '2025.09 — 至今',
+    tech: 'MaxKB · PostgreSQL · pgvector · Docker · Python · Vue3',
     details: [
-      '基于 WPF 构建高性能桌面客户端，引入心跳检测、断线重连及 ACK 确认机制，高并发下消息到达率提升至 95%',
-      '设计"服务端 + 本地"双端消息存储架构，支持离线同步与多端状态一致',
-      '优化 WPF UI 线程渲染，确保高频推送下界面流畅无卡顿',
+      '背景：企业知识散落于技术文档、员工手册及工单系统，客服检索效率低、重复咨询率高。调用 MaxKB API 集成 RAG 能力，设计差异化分段策略——技术文档按标题层级拆分、员工手册及内部知识文档通过正则匹配关键段落——将知识召回准确率从 72% 提升至 89%',
+      '利用 MaxKB 的向量检索（pgvector）与全文检索混合搜索能力，动态调整相似度阈值与 TOP-K 参数，无效引用率降低 40%',
+      '基于 MaxKB 工作流引擎构建"知识检索 → 工具调用 → 结果验证"三阶段 Agent 闭环，封装数据库查询等自定义工具为 MCP 服务，实现跨系统数据联动，关键业务流程处理效率提升 60%',
+      '结合 MaxKB 逻辑判断节点与条件分支，通过可视化编排工具调用链，非技术人员可自助搭建定制化智能问答场景，减少人工介入 45%',
     ],
   },
   {
-    title: '企业中台系统及聊天机器人',
-    period: '2024.05 — 2026.02',
-    tech: 'Vue3 · TypeScript · Element Plus · ECharts · .NET 6 · WebSocket',
+    title: '企业智能聊天机器人',
+    period: '2024.10 — 至今',
+    tech: 'Vue3 · TypeScript · Element Plus · Pinia · .NET 6 · WebSocket · SignalR',
     details: [
-      '主导企业级中台前端架构设计，封装 20+ 通用业务组件，构建内部 UI 组件库，复用率提升 30%',
-      '独立负责 FAQ 知识库管理与工作流引擎前端落地，通过可视化配置实现低代码业务逻辑编排',
-      '开发多维度数据可视化大屏；通过路由懒加载与分页策略，首屏加载速度提升 40%',
+      '背景：业务线依赖人工处理高频重复咨询，响应慢且人力成本高。主导聊天机器人前端架构设计，搭建基于 Pinia 的状态管理方案，实现多会话并发、消息实时同步与历史记录回溯',
+      '构建可配置的 Agent 任务编排引擎，支持拖拽式工具链组合与条件分支，业务人员无需编码即可搭建定制化智能问答场景',
+      '基于 WebSocket + SignalR 实现消息实时推送，引入消息确认与重试机制，保障高并发下消息可靠投递',
+    ],
+  },
+  {
+    title: '企业中台系统',
+    period: '2024.05 — 至今',
+    tech: 'Vue3 · TypeScript · Element Plus · ECharts · .NET 6 · RESTful API',
+    details: [
+      '背景：多业务线各自维护独立前端项目，技术栈分裂、重复造轮子严重。从 0 到 1 构建统一中台前端架构，基于 Vue3 + TypeScript 搭建工程化脚手架，统一 ESLint/Prettier 规范与 Git 工作流',
+      '封装 20+ 通用业务组件（动态表单、权限指令、搜索面板等），覆盖 6 个领域模块，代码复用率提升 30%，开发效率提升 25%',
+      '设计低代码工作流引擎前端，通过可视化节点编排实现业务流程配置时间从 2 小时/流程 降至 10 分钟/流程',
+      '整合 ECharts 图表库开发多维度数据可视化看板，实现实时监控、趋势分析与业务报表一站式展示',
+      '通过路由懒加载、组件异步加载与滚动虚拟化，首屏加载时间优化 40%',
+    ],
+  },
+  {
+    title: '人工客服 IM 桌面应用',
+    period: '2025.09 — 至今',
+    tech: 'WPF (.NET) · WebSocket · EF Core · SQLite',
+    details: [
+      '基于 WPF 原生控件构建桌面端即时通讯客户端，自行实现 MVVM 架构与模块化设计',
+      '设计高可用通信架构：心跳检测 + 断线重连 + 消息 ACK 确认，高并发下消息到达率提升至 99.9%',
+      '设计"服务端 + 本地 SQLite"双端消息存储架构，支持离线消息同步与毫秒级全文检索，客服响应时长缩短 20%',
+      '使用 VirtualizingStackPanel 优化长列表渲染，确保高频消息推送下界面流畅不卡顿',
     ],
   },
   {
     title: '企业会议室预约系统',
     period: '2024.10 — 2025.04',
-    tech: 'Vue3 · .NET 6 Web API · MySQL · Redis',
+    tech: 'Vue3 · .NET 6 Web API · MySQL · Redis · Ant Design Vue',
     details: [
-      '独立完成从需求分析到上线的全流程，前后端分离架构',
-      '基于 Redis 分布式锁实现预约冲突检测，高并发下响应时间稳定在 200ms 以内',
-      '构建 RBAC 多角色权限体系，实现数据级权限隔离与操作审计',
-      '主导 MySQL 数据库设计与联合索引优化，高频查询性能提升 40%',
+      '背景：原会议室管理依赖线下协调，资源利用率仅 65%，冲突频发。独立完成从需求分析、数据库设计到上线全流程，支持千人级并发预约',
+      '设计基于 Redis 分布式锁的冲突检测算法，资源利用率从 65% 提升至 90%，预约成功率从 82% 提升至 95%',
+      '构建 RBAC 多角色权限体系，实现数据级权限隔离、操作审计日志与审批流程追踪',
+      '主导 MySQL 数据库规范设计，针对高频查询场景进行联合索引优化，查询性能提升 40%',
     ],
   },
 ]
@@ -80,14 +107,31 @@ export default function ResumeSection() {
           个人简历
         </Title>
 
+        {/* 专业摘要 */}
+        <Card className={`resume-card ${darkMode ? 'dark-mode' : ''}`} style={{ marginBottom: 24 }}>
+          <Paragraph className={darkMode ? 'dark-mode' : ''} style={{ fontSize: 15, marginBottom: 0, textAlign: 'center' }}>
+            2 年+ 全栈开发经验，精通 Vue3/TypeScript 前端生态与 .NET 后端技术栈。
+            主导过企业级中台、智能知识库系统及桌面端 IM 应用从 0 到 1 交付。
+            擅长知识库系统构建（MaxKB/RAG）与 Agent 工作流编排，追求技术深度与业务价值的高效统一。
+          </Paragraph>
+        </Card>
+
         {/* 基本信息 */}
         <Row gutter={[24, 24]}>
           <Col xs={24} md={8}>
-            <Card className={`resume-info-card ${darkMode ? 'dark-mode' : ''}`}>
+            <Card
+              className={`resume-info-card ${darkMode ? 'dark-mode' : ''}`}
+              style={{ height: '100%' }}
+              styles={{ body: { height: '100%' } }}
+            >
               <Space direction="vertical" size="middle" style={{ width: '100%' }}>
                 <div>
-                  <Text type="secondary">姓名</Text>
-                  <div><Text strong className={darkMode ? 'dark-mode' : ''}>唐小宇</Text></div>
+                  <Text type="secondary">姓名 · 求职意向</Text>
+                  <div><Text strong className={darkMode ? 'dark-mode' : ''}>唐小宇 · 全栈开发工程师</Text></div>
+                </div>
+                <div>
+                  <Text type="secondary">电话 · 邮箱</Text>
+                  <div><Text strong className={darkMode ? 'dark-mode' : ''}>19120404859 · 1253701123@qq.com</Text></div>
                 </div>
                 <div>
                   <Text type="secondary">学历</Text>
@@ -96,6 +140,10 @@ export default function ResumeSection() {
                 <div>
                   <Text type="secondary">毕业院校</Text>
                   <div><Text strong className={darkMode ? 'dark-mode' : ''}>广州软件学院 (2020-2024)</Text></div>
+                </div>
+                <div>
+                  <Text type="secondary">个人网站</Text>
+                  <div><a href="https://www.mercertang.top" target="_blank" rel="noopener"><Text strong className={darkMode ? 'dark-mode' : ''}>www.mercertang.top</Text></a></div>
                 </div>
                 <div>
                   <Text type="secondary">工作经验</Text>
@@ -110,22 +158,29 @@ export default function ResumeSection() {
           </Col>
 
           <Col xs={24} md={16}>
-            <Card className={`resume-highlight-card ${darkMode ? 'dark-mode' : ''}`}>
+            <Card
+              className={`resume-highlight-card ${darkMode ? 'dark-mode' : ''}`}
+              style={{ height: '100%' }}
+              styles={{ body: { height: '100%', display: 'flex', flexDirection: 'column' } }}
+            >
               <Title level={4} className={darkMode ? 'dark-mode' : ''}>
                 <StarOutlined /> 优势亮点
               </Title>
-              <Space direction="vertical" size="small">
-                <Paragraph className={darkMode ? 'dark-mode' : ''}>
-                  <strong>全栈能力：</strong>横跨 Vue3/TypeScript 前端与 .NET 后端，具备从 0 到 1 独立交付能力
+              <Space direction="vertical" size="small" style={{ width: '100%', textAlign: 'left' }}>
+                <Paragraph className={darkMode ? 'dark-mode' : ''} style={{ marginBottom: 0, textAlign: 'left' }}>
+                  <strong>全栈交付：</strong>精通 Vue3/TypeScript 前端生态与 .NET 后端技术栈，独立完成多个企业级产品从 0 到 1 的架构设计与交付
                 </Paragraph>
-                <Paragraph className={darkMode ? 'dark-mode' : ''}>
-                  <strong>AI 工程化：</strong>熟悉 AI Agent 开发范式，掌握 Claude Code 及 DeepSeek 等主流模型的集成落地
+                <Paragraph className={darkMode ? 'dark-mode' : ''} style={{ marginBottom: 0, textAlign: 'left' }}>
+                  <strong>知识库系统：</strong>基于 MaxKB API + pgvector 构建 RAG 知识库，精通知识切片策略、混合检索、Agent 工作流编排与 MCP 工具集成
                 </Paragraph>
-                <Paragraph className={darkMode ? 'dark-mode' : ''}>
-                  <strong>架构设计：</strong>擅长前后端分离架构、RESTful API 设计、RBAC 权限模型与数据库优化
+                <Paragraph className={darkMode ? 'dark-mode' : ''} style={{ marginBottom: 0, textAlign: 'left' }}>
+                  <strong>工程化架构：</strong>擅长大型前端工程化治理，涵盖脚手架搭建、ESLint/Prettier 规范、CI/CD 流水线及 Monorepo 设计
                 </Paragraph>
-                <Paragraph className={darkMode ? 'dark-mode' : ''}>
-                  <strong>工程效率：</strong>通过组件库建设与 Python 自动化工具链，显著提升团队交付效率
+                <Paragraph className={darkMode ? 'dark-mode' : ''} style={{ marginBottom: 0, textAlign: 'left' }}>
+                  <strong>性能优化：</strong>通过路由懒加载、虚拟滚动、联合索引优化等手段，首屏加载速度提升 40%，高并发响应稳定在 200ms 以内
+                </Paragraph>
+                <Paragraph className={darkMode ? 'dark-mode' : ''} style={{ marginBottom: 0, textAlign: 'left' }}>
+                  <strong>团队效能：</strong>主导内部 UI 组件库从零搭建，沉淀 20+ 通用组件；结合 Python 自动化工具链，测试效率提升 40%
                 </Paragraph>
               </Space>
             </Card>
@@ -177,7 +232,7 @@ export default function ResumeSection() {
                         <ClockCircleOutlined style={{ marginRight: 4 }} />{exp.period}
                       </Text>
                     </div>
-                    <ul className={`resume-list ${darkMode ? 'dark-mode' : ''}`}>
+                    <ul className={`resume-list ${darkMode ? 'dark-mode' : ''}`} style={{ textAlign: 'left' }}>
                       {exp.details.map((d, i) => (
                         <li key={i}>{d}</li>
                       ))}
@@ -211,7 +266,7 @@ export default function ResumeSection() {
                     <div style={{ margin: '4px 0 6px' }}>
                       <Text type="secondary" style={{ fontSize: 12 }}>{proj.tech}</Text>
                     </div>
-                    <ul className={`resume-list ${darkMode ? 'dark-mode' : ''}`}>
+                    <ul className={`resume-list ${darkMode ? 'dark-mode' : ''}`} style={{ textAlign: 'left' }}>
                       {proj.details.map((d, i) => (
                         <li key={i}>{d}</li>
                       ))}
@@ -223,29 +278,30 @@ export default function ResumeSection() {
           </Card>
         </div>
 
-        {/* AI 技能 */}
+        {/* 核心能力 */}
         <div style={{ marginTop: 24 }}>
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={8}>
               <Card className={`resume-ai-card ${darkMode ? 'dark-mode' : ''}`}>
-                <Title level={5} className={darkMode ? 'dark-mode' : ''}>AI Agent 开发</Title>
-                <Text type="secondary">熟悉 Agent 架构设计模式（工具调用、记忆管理、多步推理），能够将 LLM 能力集成到实际业务场景</Text>
+                <Title level={5} className={darkMode ? 'dark-mode' : ''}>前端工程化</Title>
+                <Text type="secondary">擅长 Vue3 生态大型项目架构，熟悉 Pinia 状态管理、Vue Router 路由设计、Vite 构建优化及 ESLint/Prettier 规范落地</Text>
               </Card>
             </Col>
             <Col xs={24} sm={8}>
               <Card className={`resume-ai-card ${darkMode ? 'dark-mode' : ''}`}>
-                <Title level={5} className={darkMode ? 'dark-mode' : ''}>Claude Code (CCS)</Title>
-                <Text type="secondary">掌握 Claude Code 的 Agent SDK，具备自定义 Agent、自动化工作流及代码智能辅助的实践经验</Text>
+                <Title level={5} className={darkMode ? 'dark-mode' : ''}>知识库与智能系统</Title>
+                <Text type="secondary">精通 MaxKB 平台 RAG 知识库构建、知识切片策略设计与 Agent 工作流编排，具备 MCP 工具集成与跨系统联动经验</Text>
               </Card>
             </Col>
             <Col xs={24} sm={8}>
               <Card className={`resume-ai-card ${darkMode ? 'dark-mode' : ''}`}>
-                <Title level={5} className={darkMode ? 'dark-mode' : ''}>DeepSeek (DS)</Title>
-                <Text type="secondary">熟悉 DeepSeek 系列模型的 API 调用、Prompt 工程及企业级应用落地</Text>
+                <Title level={5} className={darkMode ? 'dark-mode' : ''}>性能与质量</Title>
+                <Text type="secondary">丰富的首屏优化、虚拟滚动及数据库索引调优经验，熟练使用 ECharts 构建高性能数据可视化方案</Text>
               </Card>
             </Col>
           </Row>
         </div>
+
       </div>
     </section>
   )

@@ -374,18 +374,19 @@
 .resume-list li {
   font-size: 13px;
   color: #555;
-  padding-left: 16px;
-  position: relative;
-  margin-bottom: 3px;
+  padding-left: 20px;
+  text-indent: -20px;
+  margin-bottom: 4px;
   line-height: 1.7;
+  list-style: none;
 }
 
 .resume-list li::before {
   content: '—';
-  position: absolute;
-  left: 0;
+  display: inline;
   color: #ccc;
   font-size: 11px;
+  margin-right: 6px;
 }
 
 .resume-list.dark-mode li {
